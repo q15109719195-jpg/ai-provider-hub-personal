@@ -6,6 +6,7 @@ from fastapi import FastAPI
 
 from database import create_all
 from router_logic import get_routing_rules
+from routers.cc_switch import router as cc_switch_router
 from routers.chat import router as chat_router
 from routers.providers import router as providers_router
 
@@ -21,6 +22,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.include_router(providers_router, prefix="/api")
 app.include_router(chat_router, prefix="/api")
+app.include_router(cc_switch_router, prefix="/api")
 
 
 @app.get("/")
